@@ -1,0 +1,468 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF2C3F0B1A866E470097BC99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C3F0A1A866E470097BC99 /* main.m */; };
+		FF2C3F0E1A866E470097BC99 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C3F0D1A866E470097BC99 /* AppDelegate.m */; };
+		FF2C3F141A866E470097BC99 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2C3F121A866E470097BC99 /* iPhoneStoryboard.storyboard */; };
+		FF2C3F191A866E470097BC99 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2C3F171A866E470097BC99 /* LaunchScreen.xib */; };
+		FF2C3F251A866E470097BC99 /* KHAcronisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C3F241A866E470097BC99 /* KHAcronisTests.m */; };
+		FF2C3F301A8678F60097BC99 /* KHAMasterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C3F2F1A8678F60097BC99 /* KHAMasterTableViewController.m */; };
+		FF2C3F331A867B410097BC99 /* KHANetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C3F321A867B410097BC99 /* KHANetworking.m */; };
+		FF2C3F361A8687CC0097BC99 /* KHAIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C3F351A8687CC0097BC99 /* KHAIcon.m */; };
+		FF2C3F381A86B57B0097BC99 /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2C3F371A86B57B0097BC99 /* file.png */; };
+		FF2C3F3C1A86B95F0097BC99 /* KHADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C3F3B1A86B95F0097BC99 /* KHADetailViewController.m */; };
+		FFD15E521A8796F000FD32BE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD15E511A8796F000FD32BE /* Default-568h@2x.png */; };
+		FFFF8D451A870531005EA5DC /* iPadStoryboard2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFFF8D441A870531005EA5DC /* iPadStoryboard2.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FF2C3F1F1A866E470097BC99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF2C3EFD1A866E470097BC99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF2C3F041A866E470097BC99;
+			remoteInfo = KHAcronis;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FF2C3F051A866E470097BC99 /* KHAcronis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KHAcronis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF2C3F091A866E470097BC99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF2C3F0A1A866E470097BC99 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FF2C3F0C1A866E470097BC99 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FF2C3F0D1A866E470097BC99 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FF2C3F131A866E470097BC99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
+		FF2C3F181A866E470097BC99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		FF2C3F1E1A866E470097BC99 /* KHAcronisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KHAcronisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF2C3F231A866E470097BC99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF2C3F241A866E470097BC99 /* KHAcronisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KHAcronisTests.m; sourceTree = "<group>"; };
+		FF2C3F2E1A8678F60097BC99 /* KHAMasterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAMasterTableViewController.h; sourceTree = "<group>"; };
+		FF2C3F2F1A8678F60097BC99 /* KHAMasterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAMasterTableViewController.m; sourceTree = "<group>"; };
+		FF2C3F311A867B410097BC99 /* KHANetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHANetworking.h; sourceTree = "<group>"; };
+		FF2C3F321A867B410097BC99 /* KHANetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHANetworking.m; sourceTree = "<group>"; };
+		FF2C3F341A8687CC0097BC99 /* KHAIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAIcon.h; sourceTree = "<group>"; };
+		FF2C3F351A8687CC0097BC99 /* KHAIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAIcon.m; sourceTree = "<group>"; };
+		FF2C3F371A86B57B0097BC99 /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
+		FF2C3F3A1A86B95F0097BC99 /* KHADetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHADetailViewController.h; sourceTree = "<group>"; };
+		FF2C3F3B1A86B95F0097BC99 /* KHADetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHADetailViewController.m; sourceTree = "<group>"; };
+		FF2C3F3D1A86BDCF0097BC99 /* AppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
+		FFD15E511A8796F000FD32BE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FFFF8D441A870531005EA5DC /* iPadStoryboard2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPadStoryboard2.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF2C3F021A866E470097BC99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2C3F1B1A866E470097BC99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FF2C3EFC1A866E470097BC99 = {
+			isa = PBXGroup;
+			children = (
+				FF2C3F071A866E470097BC99 /* KHAcronis */,
+				FF2C3F211A866E470097BC99 /* KHAcronisTests */,
+				FF2C3F061A866E470097BC99 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FF2C3F061A866E470097BC99 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF2C3F051A866E470097BC99 /* KHAcronis.app */,
+				FF2C3F1E1A866E470097BC99 /* KHAcronisTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF2C3F071A866E470097BC99 /* KHAcronis */ = {
+			isa = PBXGroup;
+			children = (
+				FF2C3F0C1A866E470097BC99 /* AppDelegate.h */,
+				FF2C3F0D1A866E470097BC99 /* AppDelegate.m */,
+				FF2C3F2E1A8678F60097BC99 /* KHAMasterTableViewController.h */,
+				FF2C3F2F1A8678F60097BC99 /* KHAMasterTableViewController.m */,
+				FF2C3F3A1A86B95F0097BC99 /* KHADetailViewController.h */,
+				FF2C3F3B1A86B95F0097BC99 /* KHADetailViewController.m */,
+				FF2C3F341A8687CC0097BC99 /* KHAIcon.h */,
+				FF2C3F351A8687CC0097BC99 /* KHAIcon.m */,
+				FF2C3F311A867B410097BC99 /* KHANetworking.h */,
+				FF2C3F321A867B410097BC99 /* KHANetworking.m */,
+				FF2C3F121A866E470097BC99 /* iPhoneStoryboard.storyboard */,
+				FFFF8D441A870531005EA5DC /* iPadStoryboard2.storyboard */,
+				FF2C3F171A866E470097BC99 /* LaunchScreen.xib */,
+				FF2C3F391A86B5820097BC99 /* Resources */,
+				FF2C3F081A866E470097BC99 /* Supporting Files */,
+			);
+			path = KHAcronis;
+			sourceTree = "<group>";
+		};
+		FF2C3F081A866E470097BC99 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FF2C3F091A866E470097BC99 /* Info.plist */,
+				FF2C3F0A1A866E470097BC99 /* main.m */,
+				FF2C3F3D1A86BDCF0097BC99 /* AppConstants.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FF2C3F211A866E470097BC99 /* KHAcronisTests */ = {
+			isa = PBXGroup;
+			children = (
+				FF2C3F241A866E470097BC99 /* KHAcronisTests.m */,
+				FF2C3F221A866E470097BC99 /* Supporting Files */,
+			);
+			path = KHAcronisTests;
+			sourceTree = "<group>";
+		};
+		FF2C3F221A866E470097BC99 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FF2C3F231A866E470097BC99 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FF2C3F391A86B5820097BC99 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FF2C3F371A86B57B0097BC99 /* file.png */,
+				FFD15E511A8796F000FD32BE /* Default-568h@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF2C3F041A866E470097BC99 /* KHAcronis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF2C3F281A866E470097BC99 /* Build configuration list for PBXNativeTarget "KHAcronis" */;
+			buildPhases = (
+				FF2C3F011A866E470097BC99 /* Sources */,
+				FF2C3F021A866E470097BC99 /* Frameworks */,
+				FF2C3F031A866E470097BC99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KHAcronis;
+			productName = KHAcronis;
+			productReference = FF2C3F051A866E470097BC99 /* KHAcronis.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FF2C3F1D1A866E470097BC99 /* KHAcronisTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF2C3F2B1A866E470097BC99 /* Build configuration list for PBXNativeTarget "KHAcronisTests" */;
+			buildPhases = (
+				FF2C3F1A1A866E470097BC99 /* Sources */,
+				FF2C3F1B1A866E470097BC99 /* Frameworks */,
+				FF2C3F1C1A866E470097BC99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF2C3F201A866E470097BC99 /* PBXTargetDependency */,
+			);
+			name = KHAcronisTests;
+			productName = KHAcronisTests;
+			productReference = FF2C3F1E1A866E470097BC99 /* KHAcronisTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF2C3EFD1A866E470097BC99 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = zgushonka;
+				TargetAttributes = {
+					FF2C3F041A866E470097BC99 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					FF2C3F1D1A866E470097BC99 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = FF2C3F041A866E470097BC99;
+					};
+				};
+			};
+			buildConfigurationList = FF2C3F001A866E470097BC99 /* Build configuration list for PBXProject "KHAcronis" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FF2C3EFC1A866E470097BC99;
+			productRefGroup = FF2C3F061A866E470097BC99 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF2C3F041A866E470097BC99 /* KHAcronis */,
+				FF2C3F1D1A866E470097BC99 /* KHAcronisTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF2C3F031A866E470097BC99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFFF8D451A870531005EA5DC /* iPadStoryboard2.storyboard in Resources */,
+				FF2C3F141A866E470097BC99 /* iPhoneStoryboard.storyboard in Resources */,
+				FF2C3F191A866E470097BC99 /* LaunchScreen.xib in Resources */,
+				FFD15E521A8796F000FD32BE /* Default-568h@2x.png in Resources */,
+				FF2C3F381A86B57B0097BC99 /* file.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2C3F1C1A866E470097BC99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF2C3F011A866E470097BC99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF2C3F361A8687CC0097BC99 /* KHAIcon.m in Sources */,
+				FF2C3F301A8678F60097BC99 /* KHAMasterTableViewController.m in Sources */,
+				FF2C3F0E1A866E470097BC99 /* AppDelegate.m in Sources */,
+				FF2C3F331A867B410097BC99 /* KHANetworking.m in Sources */,
+				FF2C3F3C1A86B95F0097BC99 /* KHADetailViewController.m in Sources */,
+				FF2C3F0B1A866E470097BC99 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2C3F1A1A866E470097BC99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF2C3F251A866E470097BC99 /* KHAcronisTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FF2C3F201A866E470097BC99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF2C3F041A866E470097BC99 /* KHAcronis */;
+			targetProxy = FF2C3F1F1A866E470097BC99 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FF2C3F121A866E470097BC99 /* iPhoneStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF2C3F131A866E470097BC99 /* Base */,
+			);
+			name = iPhoneStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		FF2C3F171A866E470097BC99 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF2C3F181A866E470097BC99 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FF2C3F261A866E470097BC99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FF2C3F271A866E470097BC99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FF2C3F291A866E470097BC99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = KHAcronis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FF2C3F2A1A866E470097BC99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = KHAcronis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FF2C3F2C1A866E470097BC99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KHAcronisTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KHAcronis.app/KHAcronis";
+			};
+			name = Debug;
+		};
+		FF2C3F2D1A866E470097BC99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KHAcronisTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KHAcronis.app/KHAcronis";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF2C3F001A866E470097BC99 /* Build configuration list for PBXProject "KHAcronis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF2C3F261A866E470097BC99 /* Debug */,
+				FF2C3F271A866E470097BC99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF2C3F281A866E470097BC99 /* Build configuration list for PBXNativeTarget "KHAcronis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF2C3F291A866E470097BC99 /* Debug */,
+				FF2C3F2A1A866E470097BC99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF2C3F2B1A866E470097BC99 /* Build configuration list for PBXNativeTarget "KHAcronisTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF2C3F2C1A866E470097BC99 /* Debug */,
+				FF2C3F2D1A866E470097BC99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FF2C3EFD1A866E470097BC99 /* Project object */;
+}
