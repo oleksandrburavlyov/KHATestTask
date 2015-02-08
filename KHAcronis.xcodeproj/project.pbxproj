@@ -18,6 +18,8 @@
 		FF2C3F381A86B57B0097BC99 /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2C3F371A86B57B0097BC99 /* file.png */; };
 		FF2C3F3C1A86B95F0097BC99 /* KHADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2C3F3B1A86B95F0097BC99 /* KHADetailViewController.m */; };
 		FFD15E521A8796F000FD32BE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD15E511A8796F000FD32BE /* Default-568h@2x.png */; };
+		FFD15E571A879C3300FD32BE /* Default-1024h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD15E531A879C3300FD32BE /* Default-1024h@2x.png */; };
+		FFD15E5A1A879C3300FD32BE /* Default-1024h.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD15E561A879C3300FD32BE /* Default-1024h.png */; };
 		FFFF8D451A870531005EA5DC /* iPadStoryboard2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFFF8D441A870531005EA5DC /* iPadStoryboard2.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		FF2C3F3B1A86B95F0097BC99 /* KHADetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHADetailViewController.m; sourceTree = "<group>"; };
 		FF2C3F3D1A86BDCF0097BC99 /* AppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		FFD15E511A8796F000FD32BE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FFD15E531A879C3300FD32BE /* Default-1024h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-1024h@2x.png"; sourceTree = "<group>"; };
+		FFD15E561A879C3300FD32BE /* Default-1024h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-1024h.png"; sourceTree = "<group>"; };
 		FFFF8D441A870531005EA5DC /* iPadStoryboard2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPadStoryboard2.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +150,8 @@
 			children = (
 				FF2C3F371A86B57B0097BC99 /* file.png */,
 				FFD15E511A8796F000FD32BE /* Default-568h@2x.png */,
+				FFD15E531A879C3300FD32BE /* Default-1024h@2x.png */,
+				FFD15E561A879C3300FD32BE /* Default-1024h.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -232,7 +238,9 @@
 			files = (
 				FFFF8D451A870531005EA5DC /* iPadStoryboard2.storyboard in Resources */,
 				FF2C3F141A866E470097BC99 /* iPhoneStoryboard.storyboard in Resources */,
+				FFD15E571A879C3300FD32BE /* Default-1024h@2x.png in Resources */,
 				FF2C3F191A866E470097BC99 /* LaunchScreen.xib in Resources */,
+				FFD15E5A1A879C3300FD32BE /* Default-1024h.png in Resources */,
 				FFD15E521A8796F000FD32BE /* Default-568h@2x.png in Resources */,
 				FF2C3F381A86B57B0097BC99 /* file.png in Resources */,
 			);
