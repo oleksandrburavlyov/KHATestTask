@@ -1,3 +1,4 @@
+
 //
 //  KHANetworking.m
 //  KHAcronis
@@ -64,6 +65,7 @@
                     }
                     else {
                         dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                             [delegate networkRequestDidFinishWithError:error];
                         });
                     }
