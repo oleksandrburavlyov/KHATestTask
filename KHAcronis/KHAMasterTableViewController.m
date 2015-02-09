@@ -58,7 +58,7 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
 - (void)cleariPadDetailVC {
     if (IS_IPAD) {
         UIViewController *vc = [[[self splitViewController] childViewControllers] lastObject];
-        [self updateDetailView:vc WithIconItem:nil];
+        [self updateDetailView:vc withIconItem:nil];
     }
 }
 
@@ -119,6 +119,8 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
         
         NSString *urlString = [self URLStringForFileName:iconItem.thumbnailName];
         [self.network getImageWithURLString:urlString];
+        
+        
     }
     return cell;
 }
@@ -146,12 +148,6 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
     }];
 }
 
-- (void)setIconItem:(KHAIcon *)iconItem forVC:(UIViewController *)vc {
-    if ([vc isKindOfClass:[KHADetailViewController class]]) {
-        KHADetailViewController *detailVC = (KHADetailViewController *) vc;
-        detailVC.iconItem = iconItem;
-    }
-}
 
 - (KHAIcon *)iconItemForSelectedRow {
     NSInteger rowSelected = [self.tableView indexPathForSelectedRow].row;
@@ -164,7 +160,7 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UIViewController *destVC = [segue destinationViewController];
-    [self updateDetailView:destVC WithIconItem:[self iconItemForSelectedRow]];
+    [self updateDetailView:destVC withIconItem:[self iconItemForSelectedRow]];
     
     if (IS_IPAD) {
         destVC.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
@@ -172,12 +168,10 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
     }
 }
 
-- (void)updateDetailView:(UIViewController *)controller WithIconItem:(KHAIcon *)iconItem {
-    [self setIconItem:iconItem forVC:controller];
+- (void)updateDetailView:(UIViewController *)controller withIconItem:(KHAIcon *)iconItem {
     if ([controller isKindOfClass:[KHADetailViewController class]]) {
         KHADetailViewController *detailVC = (KHADetailViewController *) controller;
         detailVC.iconItem = iconItem;
-        [detailVC updateDetailImageView];
     }
 }
 

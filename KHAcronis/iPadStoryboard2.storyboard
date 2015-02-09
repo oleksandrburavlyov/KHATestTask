@@ -84,7 +84,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="kao-3L-A7p" kind="replace" identifier="" splitViewControllerTargetIndex="1" id="Kjh-tS-0YG"/>
+                                    <segue destination="kao-3L-A7p" kind="replace" splitViewControllerTargetIndex="1" id="94U-9x-UIN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -146,6 +146,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Kjh-tS-0YG"/>
+        <segue reference="94U-9x-UIN"/>
     </inferredMetricsTieBreakers>
 </document>

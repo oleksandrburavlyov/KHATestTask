@@ -14,7 +14,6 @@
 
 @interface KHADetailViewController : UIViewController <KHANetworkingDelegate>
 
-- (void)updateDetailImageView;
-
 @property (nonatomic, strong) KHAIcon *iconItem;
+
 @end

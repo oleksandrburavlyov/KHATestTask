@@ -20,21 +20,38 @@
 
 @implementation KHADetailViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.network = [[KHANetworking alloc] initWithDelegate:self];
+    [self configureView];
+}
+/*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.network = [[KHANetworking alloc] initWithDelegate:self];    
-    [self updateDetailImageView];
+    [self configureView];
+}
+*/
+- (void)setIconItem:(KHAIcon *)newIconItem {
+    if (_iconItem != newIconItem) {
+        _iconItem = newIconItem;
+    }
+    
+    // Clear view
+    if (!newIconItem) {
+        [self configureView];
+    }
 }
 
-- (void)updateDetailImageView {
+- (void)configureView {
     self.imageView.image = self.iconItem.image;
     [self.activityIncicator stopAnimating];
     if (self.iconItem) {
         self.title = [NSString stringWithFormat:@"Detail: %@", self.iconItem.name];
         self.imageView.backgroundColor = [UIColor clearColor];
         
-        if (!self.imageView.image) {
+        if (!self.iconItem.image) {
             [self fetchImage];
         }
     }
