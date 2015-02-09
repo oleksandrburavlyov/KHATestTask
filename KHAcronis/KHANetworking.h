@@ -16,8 +16,8 @@
 @interface KHANetworking : NSObject
 - (instancetype)initWithDelegate:(id <KHANetworkingDelegate>)delegate;
 
-- (void)getJSONWithURLString:(NSString *)jsonURL;
-- (void)getImageWithURLString:(NSString *)imageURL;
+- (void)getJSONWithURLString:(NSString *)jsonURL withCallback:(void (^)(NSDictionary *dictionary, NSError *error))callbackBlock;
+- (void)getImageWithURLString:(NSString *)imageURL withCallback:(void (^)(UIImage *image, NSError *error))callbackBlock;
 
 @property (nonatomic, weak) id <KHANetworkingDelegate> delegate;
 @end

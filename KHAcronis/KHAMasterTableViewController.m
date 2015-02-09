@@ -108,7 +108,7 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    KHAIcon *iconItem = self.iconItems[indexPath.row];
+    __block KHAIcon *iconItem = self.iconItems[indexPath.row];
     cell.textLabel.text = iconItem.name;
     cell.detailTextLabel.text = iconItem.descr;
     cell.imageView.image = iconItem.thumbnail;
@@ -118,9 +118,24 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
         cell.imageView.image = [UIImage imageNamed:@"file.png"];
         
         NSString *urlString = [self URLStringForFileName:iconItem.thumbnailName];
-        [self.network getImageWithURLString:urlString];
-        
-        
+        __weak KHAMasterTableViewController *weakSelf = self;
+        [self.network getImageWithURLString:urlString withCallback:^(UIImage *image, NSError *error) {
+            if (!error) {
+                iconItem.thumbnail = image;
+                [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            }
+            else {
+#ifdef DEBUG
+                NSLog(@"Error at %@ - %@ : %@", [self class], NSStringFromSelector(_cmd), [error localizedDescription]);
+#endif
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:ALERT_TITLE_NETWORK_ERROR
+                                                                message:ALERT_MESSAGE_NETWORK_ERROR
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            }
+        }];
     }
     return cell;
 }

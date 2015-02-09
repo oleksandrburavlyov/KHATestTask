@@ -68,7 +68,7 @@
     
     KHANetworking *networking = [[KHANetworking alloc] initWithDelegate:self];
     NSString *urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, self.iconItem.imageName];
-    [networking getImageWithURLString:urlString];
+//    [networking getImageWithURLString:urlString];
 }
 
 - (void)networkRequestDidReceiveImage:(UIImage *)image forUrl:(NSURL *)url {

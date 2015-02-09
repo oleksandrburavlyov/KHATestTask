@@ -34,7 +34,7 @@
     return _session;
 }
 
-- (void)getJSONWithURLString:(NSString *)jsonURLString {
+- (void)getJSONWithURLString:(NSString *)jsonURLString withCallback:(void (^)(NSDictionary *dictionary, NSError *error))callbackBlock;{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     id <KHANetworkingDelegate> delegate = self.delegate;
@@ -73,7 +73,7 @@
     [dataTask resume];
 }
 
-- (void)getImageWithURLString:(NSString *)imageURL {
+- (void)getImageWithURLString:(NSString *)imageURL withCallback:(void (^)(UIImage *image, NSError *error))callbackBlock {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     id <KHANetworkingDelegate> delegate = self.delegate;
@@ -81,19 +81,24 @@
     NSURLSessionDataTask *dataTask =
     [self.session dataTaskWithURL:url
                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                    if (!error) {
-                        UIImage *image = [UIImage imageWithData:data];
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                            [delegate networkRequestDidReceiveImage:image forUrl:url];
-                        });
-                    }
-                    else {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                            [delegate networkRequestDidFinishWithError:error];
-                        });
-                    }
+//                    if (!error) {
+//                        UIImage *image = [UIImage imageWithData:data];
+//                        dispatch_async(dispatch_get_main_queue(), ^{
+//                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//                            [delegate networkRequestDidReceiveImage:image forUrl:url];
+//                        });
+//                    }
+//                    else {
+//                        dispatch_async(dispatch_get_main_queue(), ^{
+//                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//                            [delegate networkRequestDidFinishWithError:error];
+//                        });
+//                    }
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (callbackBlock) {
+                            callbackBlock([UIImage imageWithData:data],error);
+                        }
+                    });
                 }];
     [dataTask resume];
 }
