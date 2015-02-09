@@ -11,6 +11,7 @@
 #import "KHAIcon.h"
 #import "KHADetailViewController.h"
 
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
 static NSString * const cellIdentifier = @"IconCellIdentifier";
 
@@ -44,13 +45,23 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
 - (IBAction)reloadPressed:(UIBarButtonItem *)sender {
     sender.enabled = NO;
     
+    //  clear Master
     self.iconItems = nil;
     [self.tableView reloadData];
     
-    [self updateDetailViewWithIconItem:nil];
+    //  clear Detail if iPad
+    [self cleariPadDetailVC];
     
     [self fetchFileList];
 }
+
+- (void)cleariPadDetailVC {
+    if (IS_IPAD) {
+        UIViewController *vc = [[[self splitViewController] childViewControllers] lastObject];
+        [self updateDetailView:vc WithIconItem:nil];
+    }
+}
+
 
 
 #pragma mark - KHANetworkingDelegate
@@ -112,10 +123,6 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self updateDetailViewWithIconItem:[self iconItemForSelectedRow]];
-}
-
 
 
 #pragma mark - utils
@@ -130,7 +137,6 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
     }
     return _iconItems;
 }
-
 
 - (void)sortIconsArray {
     [self.iconItems sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
@@ -155,21 +161,21 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
 
 
 
-#pragma mark - Navigation - iPhone
+#pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIViewController *destVC = segue.destinationViewController;
-    if ([destVC isKindOfClass:[KHADetailViewController class]]) {
-        KHADetailViewController *detailVC = (KHADetailViewController *) destVC;
-        detailVC.iconItem = [self iconItemForSelectedRow];
+    UIViewController *destVC = [segue destinationViewController];
+    [self updateDetailView:destVC WithIconItem:[self iconItemForSelectedRow]];
+    
+    if (IS_IPAD) {
+        destVC.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+        destVC.navigationItem.leftItemsSupplementBackButton = YES;
     }
 }
 
-#pragma mark - Navigation - iPad
-- (void)updateDetailViewWithIconItem:(KHAIcon *)iconItem {
-    UIViewController *vc = [[self splitViewController].viewControllers objectAtIndex:1];
-    [self setIconItem:iconItem forVC:vc];
-    if ([vc isKindOfClass:[KHADetailViewController class]]) {
-        KHADetailViewController *detailVC = (KHADetailViewController *) vc;
+- (void)updateDetailView:(UIViewController *)controller WithIconItem:(KHAIcon *)iconItem {
+    [self setIconItem:iconItem forVC:controller];
+    if ([controller isKindOfClass:[KHADetailViewController class]]) {
+        KHADetailViewController *detailVC = (KHADetailViewController *) controller;
         detailVC.iconItem = iconItem;
         [detailVC updateDetailImageView];
     }

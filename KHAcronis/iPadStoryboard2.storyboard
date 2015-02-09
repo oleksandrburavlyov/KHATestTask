@@ -53,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfc-ju-Xdb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1291" y="1584"/>
+            <point key="canvasLocation" x="1121" y="1305"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="XFh-gY-wRO">
@@ -83,6 +83,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="kao-3L-A7p" kind="replace" identifier="" splitViewControllerTargetIndex="1" id="Kjh-tS-0YG"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -105,7 +108,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdy-1E-hZ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617.9200000000001" y="29.013333333333335"/>
+            <point key="canvasLocation" x="1305" y="119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5IW-0x-Z3v">
@@ -121,7 +124,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WDM-LR-rlt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071.3600000000001" y="29.013333333333335"/>
+            <point key="canvasLocation" x="891" y="119"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="AHO-Pz-eDf">
@@ -142,4 +145,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Kjh-tS-0YG"/>
+    </inferredMetricsTieBreakers>
 </document>
