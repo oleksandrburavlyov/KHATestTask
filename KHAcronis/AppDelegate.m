@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#define version v1.0
+
 @interface AppDelegate ()
 
 @end
