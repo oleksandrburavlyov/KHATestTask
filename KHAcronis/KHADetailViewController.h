@@ -12,8 +12,7 @@
 #import "KHANetworking.h"
 #import "KHAIcon.h"
 
-@interface KHADetailViewController : UIViewController <KHANetworkingDelegate>
+@interface KHADetailViewController : UIViewController
 
 @property (nonatomic, strong) KHAIcon *iconItem;
-
 @end

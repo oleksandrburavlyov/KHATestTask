@@ -18,7 +18,6 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
 
 @interface KHAMasterTableViewController ()
 
-@property (nonatomic, strong) KHANetworking *network;
 @property (nonatomic, strong) NSMutableArray *iconItems;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *reloadButton;
 @end
@@ -29,9 +28,6 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Master";
-    
-    //  create networking object
-    self.network = [[KHANetworking alloc] initWithDelegate:self];
 
     //  get iconsJSON file list
     [self fetchFileList];
@@ -39,7 +35,18 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
 
 - (void)fetchFileList {
     NSString *urlString = [self URLStringForFileName:BaseJsonName];
-    [self.network getJSONWithURLString:urlString];
+    
+    __weak KHAMasterTableViewController *weakSelf = self;
+    [[KHANetworking sharedInstance] getJSONWithURLString:urlString withCallback:^(NSDictionary *dictionary, NSError *error) {
+        if (!error) {
+            [weakSelf networkRequestDidReceiveJsonAnswer:dictionary];
+        } else {
+#ifdef DEBUG
+            NSLog(@"Error at %@ - %@ : %@", [self class], NSStringFromSelector(_cmd), [error localizedDescription]);
+#endif
+            [weakSelf networkRequestDidFinishWithError:error];
+        }
+    }];
 }
 
 - (IBAction)reloadPressed:(UIBarButtonItem *)sender {
@@ -108,7 +115,7 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    KHAIcon *iconItem = self.iconItems[indexPath.row];
+    __block KHAIcon *iconItem = self.iconItems[indexPath.row];
     cell.textLabel.text = iconItem.name;
     cell.detailTextLabel.text = iconItem.descr;
     cell.imageView.image = iconItem.thumbnail;
@@ -118,9 +125,19 @@ static NSString * const cellIdentifier = @"IconCellIdentifier";
         cell.imageView.image = [UIImage imageNamed:@"file.png"];
         
         NSString *urlString = [self URLStringForFileName:iconItem.thumbnailName];
-        [self.network getImageWithURLString:urlString];
-        
-        
+        __weak KHAMasterTableViewController *weakSelf = self;
+        [[KHANetworking sharedInstance] getImageWithURLString:urlString withCallback:^(UIImage *image, NSError *error) {
+            if (!error) {
+                iconItem.thumbnail = image;
+                [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            }
+            else {
+#ifdef DEBUG
+                NSLog(@"Error at %@ - %@ : %@", [self class], NSStringFromSelector(_cmd), [error localizedDescription]);
+#endif
+                [weakSelf networkRequestDidFinishWithError:error];
+            }
+        }];
     }
     return cell;
 }

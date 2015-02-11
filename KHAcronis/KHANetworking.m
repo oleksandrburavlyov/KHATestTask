@@ -18,83 +18,71 @@
 
 @implementation KHANetworking
 
-- (instancetype)initWithDelegate:(id<KHANetworkingDelegate>)delegate {
++ (instancetype)sharedInstance {
+    static dispatch_once_t once;
+    static id sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (instancetype)init {
     self = [super init];
     if (self) {
-        self.delegate = delegate;
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+        self.session = [NSURLSession sessionWithConfiguration:configuration];
     }
     return self;
 }
 
-- (NSURLSession *)session {
-    if (!_session) {
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-        _session = [NSURLSession sessionWithConfiguration:configuration];
-    }
-    return _session;
-}
-
-- (void)getJSONWithURLString:(NSString *)jsonURLString {
+- (void)getJSONWithURLString:(NSString *)jsonURLString withCallback:(void (^)(NSDictionary *dictionary, NSError *error))callbackBlock;{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    id <KHANetworkingDelegate> delegate = self.delegate;
+    __weak KHANetworking *weakSelf = self;
     NSURL *url = [NSURL URLWithString:jsonURLString];
-    NSURLSessionDataTask *dataTask =
-    [self.session dataTaskWithURL:url
-                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                    if (!error) {
-                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                        if (httpResponse.statusCode == 200) {
-                            NSError *jsonError;
-                            NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data
-                                                                                           options:NSJSONReadingAllowFragments
-                                                                                             error:&jsonError];
-                            if (!jsonError) {
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                    [delegate networkRequestDidReceiveJsonAnswer:jsonDictionary];
-                                });
-                            }
-                            else {
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                    [delegate networkRequestDidFinishWithError:jsonError];
-                                });
-                            }
-                        }
-                    }
-                    else {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                            [delegate networkRequestDidFinishWithError:error];
-                        });
-                    }
-                }];
+    NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSError *jsonError = nil;
+        NSDictionary *jsonDictionary = nil;
+        if (!error) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            if (httpResponse.statusCode == 200) {
+                jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            }
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (callbackBlock) {
+                NSError *returnError = error ?: jsonError;
+                callbackBlock(jsonDictionary, returnError);
+            }
+        });
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[weakSelf.session delegateQueue] waitUntilAllOperationsAreFinished];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        });
+    }];
     [dataTask resume];
 }
 
-- (void)getImageWithURLString:(NSString *)imageURL {
+- (void)getImageWithURLString:(NSString *)imageURL withCallback:(void (^)(UIImage *image, NSError *error))callbackBlock {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    id <KHANetworkingDelegate> delegate = self.delegate;
+    __weak KHANetworking *weakSelf = self;
     NSURL *url = [NSURL URLWithString:imageURL];
-    NSURLSessionDataTask *dataTask =
-    [self.session dataTaskWithURL:url
-                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                    if (!error) {
-                        UIImage *image = [UIImage imageWithData:data];
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                            [delegate networkRequestDidReceiveImage:image forUrl:url];
-                        });
-                    }
-                    else {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                            [delegate networkRequestDidFinishWithError:error];
-                        });
-                    }
-                }];
+    NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (callbackBlock) {
+                callbackBlock([UIImage imageWithData:data],error);
+            }
+        });
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[weakSelf.session delegateQueue] waitUntilAllOperationsAreFinished];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        });
+    }];
     [dataTask resume];
 }
 

@@ -11,8 +11,7 @@
 #import "KHANetworking.h"
 
 
-@interface KHAMasterTableViewController : UITableViewController <KHANetworkingDelegate>
+@interface KHAMasterTableViewController : UITableViewController
 
 - (IBAction)reloadPressed:(id)sender;
-
 @end

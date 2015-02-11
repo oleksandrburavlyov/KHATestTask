@@ -14,7 +14,6 @@
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIncicator;
-@property (nonatomic, strong) KHANetworking *network;
 @end
 
 
@@ -23,16 +22,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.network = [[KHANetworking alloc] initWithDelegate:self];
     [self configureView];
 }
+
 /*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [self configureView];
 }
-*/
+//  */
+
 - (void)setIconItem:(KHAIcon *)newIconItem {
     if (_iconItem != newIconItem) {
         _iconItem = newIconItem;
@@ -66,18 +66,19 @@
 - (void)fetchImage {
     [self.activityIncicator startAnimating];
     
-    KHANetworking *networking = [[KHANetworking alloc] initWithDelegate:self];
+    __weak KHADetailViewController *weakSelf = self;
+    __block KHAIcon *iconItem = self.iconItem;
     NSString *urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, self.iconItem.imageName];
-    [networking getImageWithURLString:urlString];
-}
-
-- (void)networkRequestDidReceiveImage:(UIImage *)image forUrl:(NSURL *)url {
-    [self.activityIncicator stopAnimating];
-    NSString *imageName = [url lastPathComponent];
-    if ([imageName isEqualToString:self.iconItem.imageName]) {
-        self.iconItem.image = image;
-        self.imageView.image = image;
-    }
+    [[KHANetworking sharedInstance] getImageWithURLString:urlString withCallback:^(UIImage *image, NSError *error) {
+        [self.activityIncicator stopAnimating];
+        if (!error) {
+            iconItem.image = image;
+            weakSelf.imageView.image = image;
+        }
+        else {
+            [weakSelf networkRequestDidFinishWithError:error];
+        }
+    }];
 }
 
 - (void)networkRequestDidFinishWithError:(NSError *)error {
