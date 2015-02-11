@@ -25,14 +25,6 @@
     [self configureView];
 }
 
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self configureView];
-}
-//  */
-
 - (void)setIconItem:(KHAIcon *)newIconItem {
     if (_iconItem != newIconItem) {
         _iconItem = newIconItem;
