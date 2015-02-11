@@ -13,6 +13,7 @@
 @interface KHANetworking ()
 
 @property (nonatomic, strong) NSURLSession *session;
+@property (atomic) NSInteger taskCount;
 @end
 
 
@@ -32,12 +33,13 @@
     if (self) {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
         self.session = [NSURLSession sessionWithConfiguration:configuration];
+        self.taskCount = 0;
     }
     return self;
 }
 
 - (void)getJSONWithURLString:(NSString *)jsonURLString withCallback:(void (^)(NSDictionary *dictionary, NSError *error))callbackBlock;{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [self startNetworkIndicator];
     
     __weak KHANetworking *weakSelf = self;
     NSURL *url = [NSURL URLWithString:jsonURLString];
@@ -52,38 +54,42 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf stopNetworkIndicator];
             if (callbackBlock) {
                 NSError *returnError = error ?: jsonError;
                 callbackBlock(jsonDictionary, returnError);
             }
-        });
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[weakSelf.session delegateQueue] waitUntilAllOperationsAreFinished];
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         });
     }];
     [dataTask resume];
 }
 
 - (void)getImageWithURLString:(NSString *)imageURL withCallback:(void (^)(UIImage *image, NSError *error))callbackBlock {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [self startNetworkIndicator];
     
     __weak KHANetworking *weakSelf = self;
     NSURL *url = [NSURL URLWithString:imageURL];
     NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf stopNetworkIndicator];
             if (callbackBlock) {
                 callbackBlock([UIImage imageWithData:data],error);
             }
         });
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[weakSelf.session delegateQueue] waitUntilAllOperationsAreFinished];
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        });
     }];
     [dataTask resume];
+}
+
+- (void)startNetworkIndicator {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    self.taskCount++;
+}
+
+- (void)stopNetworkIndicator {
+    self.taskCount--;
+    if (self.taskCount == 0) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    }
 }
 
 @end
